@@ -35,9 +35,9 @@ const moveMouseRight = async (args: Array<string>): Promise<string> => {
 };
 
 const getMousePosition = async (): Promise<string> => {
-  const point = await mouse.getPosition();
+  const { x, y } = await mouse.getPosition();
 
-  return `mouse_position:[${point.x},${point.y}]`;
+  return `mouse_position:[${x},${y}]`;
 };
 
 export {
