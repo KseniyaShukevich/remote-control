@@ -1,11 +1,20 @@
 import { WebSocketServer, createWebSocketStream, WebSocket } from 'ws';
 import { Duplex } from 'stream';
 
+import MOUSE_COMMANDS from '../mouse/commands';
+
+interface ICommand {
+  [key: string]: (args: Array<string>) => Promise<string | void>;
+}
+
 class WsServer {
   private duplex: Duplex | null;
 
-  constructor() {
+  private commands: ICommand;
+
+  constructor(commands: ICommand) {
     this.duplex = null;
+    this.commands = commands;
   }
 
   listen(port: number) {
@@ -34,13 +43,15 @@ class WsServer {
       return;
     }
 
-    this.duplex.on('data', (data) => {
-      console.log('DATA: ', data);
-      this.duplex!.write(data);
+    this.duplex.on('data', async (data) => {
+      const [command, ...args] = data.split(' ');
+      const message = await this.commands[command](args);
+
+      this.duplex!.write(message);
     });
   }
 }
 
-const wsServer = new WsServer();
+const wsServer = new WsServer(MOUSE_COMMANDS);
 
 export default wsServer;

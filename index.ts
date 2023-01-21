@@ -1,4 +1,3 @@
-// import { mouse } from '@nut-tree/nut-js';
 import httpServer from './server/httpServer/index';
 import wsServer from './server/webSocket/index';
 
