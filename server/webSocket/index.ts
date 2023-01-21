@@ -1,8 +1,6 @@
 import { WebSocketServer, createWebSocketStream, WebSocket } from 'ws';
 import { Duplex } from 'stream';
 
-import MOUSE_COMMANDS from '../mouse/commands';
-
 interface ICommand {
   [key: string]: (args: Array<string>) => Promise<string | void>;
 }
@@ -12,9 +10,13 @@ class WsServer {
 
   private commands: ICommand;
 
-  constructor(commands: ICommand) {
+  constructor() {
     this.duplex = null;
-    this.commands = commands;
+    this.commands = {};
+  }
+
+  addCommands(commands: ICommand) {
+    this.commands = { ...this.commands, ...commands };
   }
 
   listen(port: number) {
@@ -52,6 +54,6 @@ class WsServer {
   }
 }
 
-const wsServer = new WsServer(MOUSE_COMMANDS);
+const wsServer = new WsServer();
 
 export default wsServer;
