@@ -11,6 +11,7 @@
   "rules": {
       "no-console": "warn",
       "linebreak-style": ["error", "windows"],
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "no-await-in-loop": "off"
   }
 }
