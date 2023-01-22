@@ -1,7 +1,7 @@
 import httpServer from './server/httpServer/index';
 import wsServer from './server/webSocket/index';
 import MOUSE_COMMANDS from './server/mouse/commands';
-import DRAWING_COMMANDS from './server/httpServer/drawing/commands';
+import DRAWING_COMMANDS from './server/drawing/commands';
 
 const HTTP_PORT = 8181;
 
