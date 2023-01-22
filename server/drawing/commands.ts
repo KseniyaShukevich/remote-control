@@ -1,4 +1,4 @@
-import DrawingCommandName from './commandNameEnum';
+import DrawingCommandName from './CommandNameEnum';
 import { drawCircle, drawRectangle, drawSquare } from './handlers';
 import wrapFunction from '../common/functionWrapper';
 

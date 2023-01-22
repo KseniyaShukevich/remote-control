@@ -1,4 +1,4 @@
-import MouseCommandName from './commandNameEnum';
+import MouseCommandName from './CommandNameEnum';
 import {
   moveMouseUp, moveMouseDown, moveMouseLeft, moveMouseRight, getMousePosition,
 } from './handlers';

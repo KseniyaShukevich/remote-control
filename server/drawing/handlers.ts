@@ -1,8 +1,7 @@
 import { mouse, straightTo, Point } from '@nut-tree/nut-js';
 
 import { drawQuadrilateral } from './helpers';
-
-const CIRCLE_DRAW_STEP = 0.05;
+import { CIRCLE_DRAW_STEP } from './circleDrawStep';
 
 const drawCircle = async (args: Array<string>): Promise<string> => {
   const radius = Number(args[0]);
